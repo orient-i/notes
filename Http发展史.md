@@ -24,15 +24,22 @@
 </html>
 ```
 
-![HTTP/0.9](https://static001.geekbang.org/resource/image/db/34/db1166c68c22a45c9858e88a234f1a34.png?wh=1142*309)
+![HTTP/0.9](https://static001.geekbang.org/resource/image/db/34/db1166c68c22a45c9858e88a234f1a34.png?wh=1142*309)  
+由于 HTTP/0.9 的响应内容除了资源（HTML 文件）本身之外，再不包含其他内容，没有什么所谓的状态码或者错误代码。出现问题时，一个特殊的包含问题描述信息的 HTML 文件将被发回，供人查看。
 
 ### HTTP/1.0
 
 1993 年 1 月，现代浏览器的祖先 NCSA （美国国家超级计算机应用中心）研发的 Mosaic 问世。它以 in-line 等形式将图像和文本一起显示出来，而不是在单独的窗口另外显示图像，图像方面出色的表现让它迅速在世界范围内流行开来。  
-![NCSA Mosaic](https://en.wikipedia.org/wiki/File:NCSA_Mosaic_Browser_Screenshot.png)  
-1994 年 12 月，网景公司发布了 Netscape Navigator 1.0，1995 年微软公司发布了 Internet Explorer 1.0 和 2.0。同年 4 月，Web 服务器标准之一的 Apache 发布了首个公开版本 0.6.2，同年 11 月 HTML 2.0 版本发布。这一年，Web 技术的发展突飞猛进。  
-Web 技术的高速发展带来了许多新的需求，例如浏览器中展示的内容不再只是 HTML 文件，还包含 JavaScript、CSS、图片、音频、视频等各种不同类型的文件，HTTP/0.9 已经不再满足新兴网络的发展。  
+![NCSA Mosaic](https://upload.wikimedia.org/wikipedia/commons/e/ea/NCSA_Mosaic_Browser_Screenshot.png)  
+1994 年 12 月，网景公司发布了 Netscape Navigator 1.0，1995 年微软公司发布了 Internet Explorer 1.0 和 2.0，两家公司都各自对 HTML 做了扩展。同年 4 月，Web 服务器标准之一的 Apache 发布了首个公开版本 0.6.2，同年 11 月 HTML 2.0 版本发布。这一年，Web 技术的发展突飞猛进。  
+Web 技术的高速发展带来了许多新的需求，例如浏览器中展示的内容不再只是 HTML 文件，还包含 JavaScript、CSS、图片、音频、视频等各种不同类型的文件，只能传输 HTML 文件的 HTTP/0.9 已经不再满足新兴网络的发展。  
 1996 年 5 月，HTTP/1.0 发布。
+
+相对于 HTTP/0.9，HTTP/1.0 的变化主要在以下几点：
+
+- 提出了状态码的概念。状态码会在响应开始时发送，使浏览器能够了解请求是否执行成功，并根据状态码相应地调整行为（例如更新或者直接使用本地缓存、重定向等等）。
+- 引入了 HTTP 标头。在请求和响应信息中新增了用来描述元数据的请求头和响应头，用以帮助客户端和服务器更好地进行数据交互。例如前面提到的“多种类型的文件传输”场景，作为 HTTP/1.0 的核心诉求之一，HTTP/1.0 可以通过请求头中的 `accept`、`accept-encoding`、`accept-Charset` 字段来告诉服务器，客户端所期望资源的类型、压缩方式和编码格式。此外，HTTP 标头也使得协议变得更加灵活，易于扩展。后续若是再次修订版本，只需要往 HTTP 标头中添加新的元数据字段即可。
+- 引入 Cache 机制。为减轻服务器的压力，HTTP/1.0 首次引入了 Cache 机制用来缓存已经下载过的资源。
 
 3. Http 各个版本的定义、解决的问题、带来的问题
 
